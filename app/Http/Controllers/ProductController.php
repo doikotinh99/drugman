@@ -53,7 +53,7 @@ class ProductController extends Controller
         }
     }
 
-    public function getView()
+    public function getView(Request $request)
     {
         $product = Product::all();
         $company = Company::all();
@@ -63,7 +63,8 @@ class ProductController extends Controller
         $data = [
             'pages' => ['pages.tr_order'],
             'product' => $product,
-            'company' => $company
+            'company' => $company,
+            'stt' => $request->get('stt')
         ];
         return view('ajax_layout', $data);
     }

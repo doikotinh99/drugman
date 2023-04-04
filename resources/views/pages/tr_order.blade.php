@@ -1,5 +1,5 @@
 <tr>
-    <td>1.</td>
+    <td>{{$stt}}</td>
     <td>
         <div class="form-group">
             <select required name="product[]" class="form-control select2 product" style="width: 100%;">

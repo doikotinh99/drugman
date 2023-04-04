@@ -64,7 +64,7 @@
                             <div class="card-header">
                                 <div class="form-group w-100">
                                     <label for="vendor">Cửa hàng</label>
-                                    <select class="custom-select form-control-border border-width-2" id="vendor"
+                                    <select class="custom-select form-control-border border-width-2 select2" id="vendor"
                                         name="vendor">
                                         @foreach ($vendor as $item)
                                             <option value="{{ $item->id }}">

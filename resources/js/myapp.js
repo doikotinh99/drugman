@@ -28,6 +28,21 @@ $(document).ready(function () {
             $html += '<option value="' + e.id + '">' + e.name + '</option>'
         })
         $("#AddressCity").html($html)
+        $.get('/address/district/' + $("#AddressCity option")[0].value, (data) => {
+            $html = ''
+            data.map((e) => {
+                $html += '<option value="' + e.id + '">' + e.name + '</option>'
+            })
+            $("#AddressDistrict").html($html)
+            $.get('/address/ward/' + $("#AddressDistrict option")[0].value, (data) => {
+                $html = ''
+                data.map((e) => {
+                    $html += '<option value="' + e.id + '">' + e.name + '</option>'
+    
+                })
+                $("#AddressWard").html($html)
+            })
+        })
     })
 
     $("#AddressCity").change((e) => {
@@ -36,9 +51,16 @@ $(document).ready(function () {
             $html = ''
             data.map((e) => {
                 $html += '<option value="' + e.id + '">' + e.name + '</option>'
-
             })
             $("#AddressDistrict").html($html)
+            $.get('/address/ward/' + $("#AddressDistrict option")[0].value, (data) => {
+                $html = ''
+                data.map((e) => {
+                    $html += '<option value="' + e.id + '">' + e.name + '</option>'
+    
+                })
+                $("#AddressWard").html($html)
+            })
         })
     })
 
@@ -62,7 +84,11 @@ $(document).ready(function () {
         $(".product").html($html)
     })
     $('.btnAdd').click(() => {
-        $.get('/product/view', (data) => {
+        console.log($("#tableModalInsertOrder tbody")[0].children)
+        $stt = $("#tableModalInsertOrder tbody")[0].children.length
+        $.get('/product/view', {stt : Number($stt) - 1}, (data) => {
+            
+            
             $("#tableModalInsertOrder tbody").append(data)
         })
     })

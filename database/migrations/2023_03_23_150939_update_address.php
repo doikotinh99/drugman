@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::table('addresses', function (Blueprint $table) {
             $table->after('district', function ($table) {
-                $table->string('ward');
+                $table->string('ward')->nullable();
             });
         });
     }
